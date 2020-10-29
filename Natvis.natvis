@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="Card">
+    <DisplayString>{{ rank = {_Rank}, suit = {(Card::ECardSuit)(_Suit)}, encoded = {data} }}</DisplayString>
+    <Expand>
+      <Item Name="[rank]" Condition="_Rank &gt; 1 &amp;&amp; _Rank &lt; 11">_Rank</Item>
+      <Item Name="[rank]" Condition="_Rank == 1 || _Rank &gt; 10">(Card::ECardRank)(_Rank)</Item>
+      <Item Name="[suit]">(Card::ECardSuit)(_Suit)</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="CardSprite">
+    <DisplayString>{{ childCount = {cachedCount} }}</DisplayString>
+    <Expand>
+      <ExpandedItem>card</ExpandedItem>
+      <Item Name="[nextSprite]">nextSprite</Item>
+      <Item Name="[needsUpdate]">bNeedsUpdate</Item>
+      <Item Name="[needsRecalculate]">bNeedsRecalculate</Item>
+    </Expand>
+  </Type>
+</AutoVisualizer>
